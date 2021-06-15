@@ -1,14 +1,17 @@
 ﻿using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class AimInputProcessor : MonoBehaviour
+public class AimInputProcessor : MonoBehaviour, IInputProcessor
 {
   private Transform m_transform;
 
   [Header("Settings")]
   [SerializeField, Range(0f, 1f)] private float sensitivity = 0.15f;
-  [SerializeField] private bool invertY = false;
   [SerializeField, Range(0f, 90f), Tooltip("Max amount of degrees a player can turn on the X-Axis (to look up or down)")] private float xRotationClamp = 80;
+
+  [Space]
+  [SerializeField] private bool invertXInput = false;
+  [SerializeField] private bool invertYInput = false;
 
   private float xRotation = 0f; // Rotation on the X-Axis (to look Up & Down)
   private float yRotation = 0f; // Rotation on the Y-Axis (to look Left & Right)
@@ -22,15 +25,15 @@ public class AimInputProcessor : MonoBehaviour
     yRotation = m_transform.localRotation.eulerAngles.y;
   }
 
-  private void Update() => PerformAction();
+  private void Update() => PerformAim();
 
   // Called by the Player Input component
   public void InputActionHandler(InputAction.CallbackContext value) => playerInput = value.ReadValue<Vector2>();
 
-  private void PerformAction()
+  private void PerformAim()
   {
-    yRotation += playerInput.x * sensitivity; // Left & Right
-    xRotation -= playerInput.y * sensitivity * (invertY ? -1 : 1); // Up & Down
+    yRotation += playerInput.x * sensitivity * (invertXInput ? -1 : 1); // Left & Right
+    xRotation -= playerInput.y * sensitivity * (invertYInput ? -1 : 1); // Up & Down
     xRotation = Mathf.Clamp(xRotation, -xRotationClamp, xRotationClamp);
 
     m_transform.localRotation = Quaternion.Euler(xRotation, yRotation, 0f);

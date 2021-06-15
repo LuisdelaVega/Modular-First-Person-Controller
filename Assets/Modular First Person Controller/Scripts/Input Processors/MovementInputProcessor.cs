@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class MovementInputProcessor : MovementModifier
+public class MovementInputProcessor : MovementModifier, IInputProcessor
 {
   #region Params
   // References
