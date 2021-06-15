@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
+using UnityEngine.InputSystem;
 
-public class JumpInputProcessor : MovementModifier
+public class JumpInputProcessor : MovementModifier, IInputProcessor
 {
   #region Params
   [SerializeField] protected CharacterController controller = null;
@@ -16,7 +17,7 @@ public class JumpInputProcessor : MovementModifier
   public void AddForce(Vector3 force) => Value += force / mass;
 
   // Called by the Player Input component
-  public void InputActionHandler()
+  public void InputActionHandler(InputAction.CallbackContext _)
   {
     if (!controller.isGrounded) return;
 

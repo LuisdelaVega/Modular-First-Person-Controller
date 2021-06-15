@@ -138,6 +138,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0.48099995
       objectReference: {fileID: 0}
+    - target: {fileID: 841702889, guid: 95961169cb8622041ad716a9b42a329c, type: 3}
+      propertyPath: m_Lens.m_SensorSize.x
+      value: 1.7770898
+      objectReference: {fileID: 0}
     - target: {fileID: 2115643156211750795, guid: 95961169cb8622041ad716a9b42a329c, type: 3}
       propertyPath: m_Name
       value: First Person Player
