@@ -373,7 +373,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sensitivity: 0.08
-  invertY: 0
+  invertXInput: 0
+  invertYInput: 0
   xRotationClamp: 80
 --- !u!114 &2115643156211750796
 MonoBehaviour:
@@ -469,7 +470,7 @@ MonoBehaviour:
       - m_Target: {fileID: 2115643156211750796}
         m_TargetAssemblyTypeName: JumpInputProcessor, Assembly-CSharp
         m_MethodName: InputActionHandler
-        m_Mode: 1
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
